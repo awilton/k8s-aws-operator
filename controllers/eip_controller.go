@@ -196,6 +196,13 @@ func (r *EIPReconciler) allocateEIP(ctx context.Context, eip *awsv1alpha1.EIP, l
 		eip.Status.State = "allocated"
 		eip.Status.AllocationId = aws.StringValue(resp.AllocationId)
 		eip.Status.PublicIPAddress = aws.StringValue(resp.PublicIp)
+		if eip.Spec.NoReleaseFlag {
+			log.Info("{aw} Setting No Release Flag", "flag value", eip.Spec.NoReleaseFlag)
+			eip.Status.NoReleaseFlag = eip.Spec.NoReleaseFlag
+		} else {
+			log.Info("{aw} No Release Flag not defined in spec setting false")
+			eip.Status.NoReleaseFlag = false
+		}
 		r.Log.Info("allocated", "allocationId", eip.Status.AllocationId)
 		if err := r.Update(ctx, eip); err != nil {
 			return err

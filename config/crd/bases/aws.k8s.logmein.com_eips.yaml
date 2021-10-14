@@ -24,6 +24,9 @@ spec:
   - JSONPath: .status.assignment.eni
     name: ENI
     type: string
+  - JSONPath: .status.noReleaseFlag
+    name: No Release
+    type: boolean
   group: aws.k8s.logmein.com
   names:
     kind: EIP
@@ -73,6 +76,8 @@ spec:
               items:
                 type: string
               type: array
+            noReleaseFlag:
+              type: boolean
             tags:
               additionalProperties:
                 type: string
@@ -100,6 +105,8 @@ spec:
               type: string
             publicIPAddress:
               type: string
+            noReleaseFlag:
+              type: boolean
             state:
               description: "Current state of the EIP object. \n State transfer diagram:
                 \n                   /------- unassigning <----\\--------------\\
