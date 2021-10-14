@@ -28,7 +28,6 @@ spec:
         args:
         - -region=##AWS_REGION##
         - -leader-election-namespace=kube-system
-        - -hosted-zone-id=##HOSTED_ZONE##
         ports:
         - name: metrics
           containerPort: 8080
