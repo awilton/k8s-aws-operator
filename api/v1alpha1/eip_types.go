@@ -44,6 +44,7 @@ type EIPSpec struct {
 	PublicIPv4Pools []string `json:"publicIPv4Pools,omitempty"`
 	PublicIPAddress string   `json:"publicIPAddress,omitempty"`
 
+	NoReleaseFlag bool `json:"noReleaseFlag,omitempty"`
 	// Tags that will be applied to the created EIP.
 	// +optional
 	Tags *map[string]string `json:"tags,omitempty"`
@@ -66,6 +67,8 @@ type EIPStatus struct {
 
 	AllocationId    string `json:"allocationId,omitempty"`
 	PublicIPAddress string `json:"publicIPAddress,omitempty"`
+
+	NoReleaseFlag bool `json:"noReleaseFlag,omitempty"`
 
 	AssociationId string         `json:"associationId,omitempty"`
 	Assignment    *EIPAssignment `json:"assignment,omitempty"`
