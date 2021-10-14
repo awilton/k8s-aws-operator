@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM golang:1.14.4 as builder
+FROM public.ecr.aws/bitnami/golang:1.14-debian-10 as builder
 
 WORKDIR /workspace
 # Copy the go source
