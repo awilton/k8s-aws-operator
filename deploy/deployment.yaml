@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: k8s-aws-operator
       containers:
-      - image: 193647639323.dkr.ecr.##AWS_REGION##.amazonaws.com/k8s-aws-operator:commit-5adc533
+      - image: 193647639323.dkr.ecr.##AWS_REGION##.amazonaws.com/k8s-aws-operator:commit-17734af
         name: k8s-aws-operator
         resources:
           requests:
