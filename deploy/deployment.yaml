@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: k8s-aws-operator
       containers:
-      - image: logmein/k8s-aws-operator
+      - image: 193647639323.dkr.ecr.##AWS_REGION##.amazonaws.com/k8s-aws-operator:commit-5adc533
         name: k8s-aws-operator
         resources:
           requests:
@@ -26,8 +26,9 @@ spec:
           limits:
             memory: 100Mi
         args:
-        - -region=us-east-1
+        - -region=##AWS_REGION##
         - -leader-election-namespace=kube-system
+        - -hosted-zone-id=##HOSTED_ZONE##
         ports:
         - name: metrics
           containerPort: 8080
