@@ -147,8 +147,13 @@ func (r *EIPReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 			}
 
 			if status.State == "releasing" {
-				if err := r.releaseEIP(ctx, &eip, log); err != nil {
-					return ctrl.Result{}, err
+				if status.NoReleaseFlag {
+					log.Info("{aw} No release flag set will not release IP back to AWS", eip.Status.PublicIPAddress)
+				} else {
+					log.Info("{aw} Releasing IP back to AWS", eip.Status.PublicIPAddress)
+					if err := r.releaseEIP(ctx, &eip, log); err != nil {
+						return ctrl.Result{}, err
+					}
 				}
 			}
 
